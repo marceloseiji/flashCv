@@ -12,7 +12,9 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.js --open --hot",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "prettier-check": "prettier --check .",
+    "prettier-format": "prettier --write ."
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -25,6 +27,7 @@
     "css-loader": "^6.7.3",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.8.3",
     "progress-bar-webpack-plugin": "^2.1.0",
     "style-loader": "^3.3.1",
     "typescript": "^4.9.4",
