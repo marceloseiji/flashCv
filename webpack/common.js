@@ -2,18 +2,29 @@ const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const chalk = require('chalk')
+const dotenv = require('dotenv')
+const { DefinePlugin, EnvironmentPlugin } = require('webpack')
 
-module.exports = {
-  mode: 'development',
+module.exports = env => ({
+  mode: env.mode,
   entry: './src/index',
   output: {
+    clean: true,
     filename: 'bundle.js',
     path: path.resolve('dist'),
-    publicPath: '/'
+    publicPath: env.publicPath
   },
   devServer: {
-    port: 3000,
-    historyApiFallback: true
+    headers: {
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Methods': '*',
+      'Access-Control-Allow-Origin': '*'
+    },
+    port: env.port,
+    historyApiFallback: true,
+    hot: true,
+    open: true,
+    devMiddleware: { writeToDisk: true }
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx']
@@ -42,6 +53,10 @@ module.exports = {
     ]
   },
   plugins: [
+    new EnvironmentPlugin({ ...process.env }),
+    new DefinePlugin({
+      'process.env': JSON.stringify(dotenv.config().parsed)
+    }),
     new HtmlWebPackPlugin({
       template: 'public/index.html'
     }),
@@ -54,4 +69,4 @@ module.exports = {
       clear: false
     })
   ]
-}
+})
