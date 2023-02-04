@@ -1,2 +1,8 @@
+# Build
 /dist/
+
+# Dependencies
 /node_modules
+
+# TS build infos
+tsconfig.tsbuildinfo
