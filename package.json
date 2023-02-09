@@ -7,8 +7,8 @@
   "author": "Marcelo Seiji",
   "license": "MIT",
   "scripts": {
-    "start": "env-cmd -f .env.local webpack serve --progress --config webpack/webpack.local.js --open --hot",
-    "dev": "env-cmd -f .env.prod webpack serve --progress --config webpack/webpack.prod.js --open --hot",
+    "start": "env-cmd -f .env.local webpack serve --open --progress --config webpack/webpack.local.js",
+    "dev": "env-cmd -f .env.prod webpack serve --open --progress --config webpack/webpack.prod.js",
     "build": "env-cmd -f .env.prod webpack --progress --config webpack/webpack.prod.js",
     "build:dev": "env-cmd -f .env.prod webpack --progress --config webpack/webpack.dev.js",
     "prettier-check": "prettier --check .",

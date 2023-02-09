@@ -2,7 +2,11 @@
   "compilerOptions": {
     "baseUrl": "src",
     "target": "ES2021",
-    "lib": ["dom", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "dom",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "esModuleInterop": true,
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -24,6 +28,14 @@
     "skipLibCheck": true,
     "incremental": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", ".jest/setup.ts"],
-  "exclude": ["node_modules", "dist", "src/**/*.test*"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".jest/setup.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.test*"
+  ]
 }
