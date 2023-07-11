@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Home from '../containers/home'
+import Home from 'containers/home'
 
 const Router = () => (
   <RouterProvider
