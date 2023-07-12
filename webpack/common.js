@@ -29,7 +29,8 @@ module.exports = env => {
       devMiddleware: { writeToDisk: true }
     },
     resolve: {
-      extensions: ['.js', '.jsx', '.ts', '.tsx']
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      modules: ['src', 'node_modules']
     },
     module: {
       rules: [
