@@ -3,7 +3,8 @@
     "browser": true,
     "es2021": true,
     "node": true,
-    "jest": true
+    "jest": true,
+    "jest/globals": true
   },
   "settings": {
     "react": {
@@ -80,6 +81,7 @@
         "unnamedComponents": "arrow-function"
       }
     ],
+    "no-underscore-dangle": 0,
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-unused-vars": "error",
     "react/jsx-uses-react": "error",
@@ -122,7 +124,14 @@
         "plugin:testing-library/react",
         "plugin:jest/recommended",
         "plugin:jest/style"
-      ]
+      ],
+      "rules": {
+        "files": [
+          "*.test.tsx",
+          "*.test.ts"
+        ],
+        "jest/expect-expect": "off"
+      }
     }
   ]
 }
