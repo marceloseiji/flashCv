@@ -6,3 +6,6 @@
 
 # TS build infos
 tsconfig.tsbuildinfo
+
+# Test Coverage
+/coverage
