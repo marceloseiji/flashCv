@@ -1,9 +1,9 @@
 {
-  "name": "mtgchamps",
+  "name": "flashcv",
   "version": "1.0.0",
-  "description": "Web System to track our champs",
+  "description": "Web System to create automated resumes",
   "main": "index.js",
-  "repository": "git@github.com:marceloseiji/mtgChamps.git",
+  "repository": "https://github.com/marceloseiji/flashCv",
   "author": "Marcelo Seiji",
   "license": "MIT",
   "scripts": {
