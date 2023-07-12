@@ -1,1 +1,3 @@
-# ReactBoilerplate2023
+# Flash CV
+ ---
+This is an auto curriculum system.
