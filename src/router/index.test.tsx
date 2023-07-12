@@ -1,7 +1,8 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import Router from '.'
 import * as reactRouterDom from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 jest.mock('react-router-dom', () => {
   return {
@@ -10,8 +11,8 @@ jest.mock('react-router-dom', () => {
   }
 })
 
-describe('routes', () => {
-  render(<Router />)
+test('routes', () => {
+  render(<Router />, { wrapper: BrowserRouter })
 
-  expect(reactRouterDom.createBrowserRouter).toBeCalled()
+  expect(screen.getByText(/home testing/i)).toBeInTheDocument()
 })
