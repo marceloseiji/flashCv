@@ -1,3 +1,3 @@
-const cvCreator = () => <h1>CV CREATOR</h1>
+const CvCreator = () => <h1>CV CREATOR</h1>
 
-export default cvCreator
+export default CvCreator
