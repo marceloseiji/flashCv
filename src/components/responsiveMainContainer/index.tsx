@@ -4,7 +4,7 @@ type Props = {
   children: React.ReactElement
 }
 
-const ResponsiveContainer = (props: Props) => {
+const ResponsiveMainContainer = (props: Props) => {
   const { children } = props
   const theme = useTheme()
 
@@ -12,11 +12,14 @@ const ResponsiveContainer = (props: Props) => {
     useMediaQuery(theme.breakpoints.down(breakPoint))
   )[0]
 
+  const isSmallScreen = smallerBreakPoint === 'sm'
+
   return (
     <Container
       maxWidth={smallerBreakPoint}
       sx={{
-        height: '100%'
+        height: `calc(100% - ${isSmallScreen ? '56px' : '64px'})`,
+        marginTop: `${isSmallScreen ? '56px' : '64px'}`
       }}
     >
       {children}
@@ -24,4 +27,4 @@ const ResponsiveContainer = (props: Props) => {
   )
 }
 
-export default ResponsiveContainer
+export default ResponsiveMainContainer
