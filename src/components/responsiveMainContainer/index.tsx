@@ -19,7 +19,8 @@ const ResponsiveMainContainer = (props: Props) => {
       maxWidth={smallerBreakPoint}
       sx={{
         height: `calc(100% - ${isSmallScreen ? '56px' : '64px'})`,
-        marginTop: `${isSmallScreen ? '56px' : '64px'}`
+        marginTop: `${isSmallScreen ? '56px' : '64px'}`,
+        backgroundColor: theme.palette.background.default
       }}
     >
       {children}
