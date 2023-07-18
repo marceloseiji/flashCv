@@ -13,8 +13,8 @@ if (container) {
   const root = createRoot(container)
   root.render(
     <BrowserRouter>
-      <CssBaseline />
       <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
         <ResponsiveMainContainer>
           <App />
         </ResponsiveMainContainer>
