@@ -1,9 +1,10 @@
-import { TitleTest } from './style'
-import Button from '@mui/material/Button'
+import { Typography } from '@mui/material'
 
 const CvCreator = () => (
   <>
-    <Button variant="contained">Hello World</Button>
+    <Typography variant="h6" gutterBottom>
+      CV Generator
+    </Typography>
   </>
 )
 
