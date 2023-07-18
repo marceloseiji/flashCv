@@ -5,6 +5,6 @@ import Home from '../home'
 it('Teste de jest', () => {
   render(<Home />)
 
-  const text = screen.getByText(/home testing/i)
+  const text = screen.getByText(/crie seu currículo online/i)
   expect(text).toBeInTheDocument()
 })
