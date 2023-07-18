@@ -23,7 +23,7 @@ const ResponsiveMainContainer = (props: Props) => {
         marginTop: `${mobileHeightAdjustment}`,
         backgroundColor: theme.palette.background.default
       }}
-      data-testId="responsiveMainContainer"
+      data-testid="responsiveMainContainer"
     >
       {children}
     </Container>
