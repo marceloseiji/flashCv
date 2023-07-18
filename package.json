@@ -17,7 +17,8 @@
     "typecheck": "tsc --project tsconfig.json",
     "prepare": "husky install",
     "test": "jest --maxWorkers=50%",
-    "test:watch": "jest --watch --maxWorkers=25%"
+    "test:watch": "jest --watch --maxWorkers=25%",
+    "test:coverage": "jest --maxWorkers=25% --coverage"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
