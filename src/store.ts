@@ -1,6 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import rootReducer from './slices'
+import cvSlice from 'slices/cv'
 
-const store = configureStore({ reducer: rootReducer })
+const reducer = {
+  cvReduxcer: cvSlice.reducer
+}
+
+const store = configureStore({ reducer })
 
 export default store
