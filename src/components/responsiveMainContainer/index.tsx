@@ -13,15 +13,17 @@ const ResponsiveMainContainer = (props: Props) => {
   )[0]
 
   const isSmallScreen = smallerBreakPoint === 'sm'
+  const mobileHeightAdjustment = isSmallScreen ? '56px' : '64px'
 
   return (
     <Container
       maxWidth={smallerBreakPoint}
       sx={{
-        height: `calc(100% - ${isSmallScreen ? '56px' : '64px'})`,
-        marginTop: `${isSmallScreen ? '56px' : '64px'}`,
+        height: `calc(100% - ${mobileHeightAdjustment})`,
+        marginTop: `${mobileHeightAdjustment}`,
         backgroundColor: theme.palette.background.default
       }}
+      data-testId="responsiveMainContainer"
     >
       {children}
     </Container>
