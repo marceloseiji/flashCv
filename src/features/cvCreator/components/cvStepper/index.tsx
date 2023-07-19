@@ -2,17 +2,26 @@ import * as React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setActiveStep } from 'slices/cv'
 import { RootState } from 'store'
+import BasicInfos from 'features/cvCreator/components/steps/basicInfos'
+import Presentation from 'features/cvCreator/components/steps/presentation'
 import {
   Box,
   Stepper,
   Step,
   StepButton,
   Button,
-  Typography,
-  Container
+  Typography
 } from '@mui/material'
 
-const steps = ['Informações básicas']
+type StepProps = {
+  title: string
+  component: JSX.Element
+}
+
+const steps: StepProps[] = [
+  { title: 'Informações básicas', component: <BasicInfos /> },
+  { title: 'Apresentação', component: <Presentation /> }
+]
 
 const CvStepper = () => {
   const dispatch = useDispatch()
@@ -81,19 +90,20 @@ const CvStepper = () => {
       }}
     >
       <Stepper nonLinear activeStep={activeStep}>
-        {steps.map((label, index) => (
+        {steps.map((step, index) => (
           <Step
-            key={label}
+            key={step.title}
             completed={completed[index]}
-            sx={{ paddingLeft: 0 }}
+            sx={{
+              padding: 0,
+              '& .MuiStepLabel-iconContainer': { padding: 0 }
+            }}
           >
             <StepButton
               color="inherit"
               onClick={handleStep(index)}
               sx={{ margin: 0, padding: 0 }}
-            >
-              {label}
-            </StepButton>
+            />
           </Step>
         ))}
       </Stepper>
@@ -110,9 +120,17 @@ const CvStepper = () => {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <Box sx={{ display: 'flex', flex: 1, marginTop: '16px' }}>
-            Step {activeStep + 1}
-          </Box>
+          {steps.map((step: StepProps, index: number) => {
+            if (index === activeStep) {
+              return (
+                <Box sx={{ marginTop: '16px' }} key={step.title}>
+                  <Typography sx={{ mt: 2, mb: 1 }}>{step.title}</Typography>
+                  {step.component}
+                </Box>
+              )
+            }
+            return null
+          })}
           <Box
             sx={{
               display: 'flex',
@@ -127,11 +145,11 @@ const CvStepper = () => {
               onClick={handleBack}
               sx={{ mr: 1 }}
             >
-              Back
+              Voltar
             </Button>
             <Box sx={{ flex: '1 1 auto' }} />
             <Button onClick={handleNext} sx={{ mr: 1 }}>
-              Next
+              Avançar
             </Button>
             {activeStep !== steps.length &&
               (completed[activeStep] ? (
@@ -141,8 +159,8 @@ const CvStepper = () => {
               ) : (
                 <Button onClick={handleComplete}>
                   {completedSteps() === totalSteps() - 1
-                    ? 'Finish'
-                    : 'Complete Step'}
+                    ? 'Finalizado'
+                    : 'Finalizar etapa'}
                 </Button>
               ))}
           </Box>
