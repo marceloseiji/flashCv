@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import { BasicInfos } from './types'
+import { PayloadAction } from '@reduxjs/toolkit'
+import { BasicInfos, Stepper } from './types'
 import { initialState } from './initialState'
 
 const cvSlice = createSlice({
@@ -9,9 +9,12 @@ const cvSlice = createSlice({
   reducers: {
     setBasicInfos(state, action: PayloadAction<BasicInfos>) {
       state.stepBasicInfos = { ...state.stepBasicInfos, ...action.payload }
+    },
+    setActiveStep(state, action: PayloadAction<Stepper['activeStep']>) {
+      state.stepper.activeStep = action.payload
     }
   }
 })
 
-export const { setBasicInfos } = cvSlice.actions
+export const { setBasicInfos, setActiveStep } = cvSlice.actions
 export default cvSlice.reducer
