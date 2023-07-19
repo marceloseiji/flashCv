@@ -3,8 +3,13 @@ type BasicInfos = {
   age: string
 }
 
-type InitialStateProps = {
-  stepBasicInfos: BasicInfos
+type Stepper = {
+  activeStep: number
 }
 
-export type { BasicInfos, InitialStateProps }
+type InitialStateProps = {
+  stepBasicInfos: BasicInfos
+  stepper: Stepper
+}
+
+export type { BasicInfos, InitialStateProps, Stepper }
