@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit'
-import { BasicInfos, Stepper } from './types'
+import { BasicInfos, BasicInfosStatus, Stepper } from './types'
 import { initialState } from './initialState'
 
 const cvSlice = createSlice({
@@ -14,7 +14,13 @@ const cvSlice = createSlice({
           text: action.payload[action.payload.field].text,
           hasError: action.payload[action.payload.field].hasError
         },
-        field: action.payload.field
+        field: action.payload.field,
+        isCompleted:
+          !!action.payload.name.text &&
+          !!action.payload.age.text &&
+          !!action.payload.role.text &&
+          !!action.payload.city.text &&
+          !!action.payload.state.text
       }
     },
     setActiveStep(state, action: PayloadAction<Stepper['activeStep']>) {

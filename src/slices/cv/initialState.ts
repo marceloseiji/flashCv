@@ -6,6 +6,7 @@ const initialState: InitialStateProps = {
   },
   stepBasicInfos: {
     field: BasicInfosFields.name,
+    isCompleted: false,
     name: {
       text: '',
       hasError: false
