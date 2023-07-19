@@ -13,4 +13,5 @@ const cvSlice = createSlice({
   }
 })
 
-export default cvSlice
+export const { setBasicInfos } = cvSlice.actions
+export default cvSlice.reducer

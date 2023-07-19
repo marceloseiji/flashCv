@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import cvSlice from 'slices/cv'
+import cvReducer from 'slices/cv'
 
 const reducer = {
-  cvReduxcer: cvSlice.reducer
+  cvReducer
 }
 
 const store = configureStore({ reducer })
