@@ -1,15 +1,24 @@
 import * as React from 'react'
-import Box from '@mui/material/Box'
-import Stepper from '@mui/material/Stepper'
-import Step from '@mui/material/Step'
-import StepButton from '@mui/material/StepButton'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
+import { useSelector, useDispatch } from 'react-redux'
+import { setActiveStep } from 'slices/cv'
+import { RootState } from 'store'
+import {
+  Box,
+  Stepper,
+  Step,
+  StepButton,
+  Button,
+  Typography,
+  Container
+} from '@mui/material'
 
 const steps = ['Informações básicas']
 
 const CvStepper = () => {
-  const [activeStep, setActiveStep] = React.useState(0)
+  const dispatch = useDispatch()
+  const { activeStep } = useSelector(
+    (state: RootState) => state.cvReducer.stepper
+  )
   const [completed, setCompleted] = React.useState<{
     [k: number]: boolean
   }>({})
@@ -37,15 +46,15 @@ const CvStepper = () => {
           // find the first step that has been completed
           steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1
-    setActiveStep(newActiveStep)
+    dispatch(setActiveStep(newActiveStep))
   }
 
   const handleBack = () => {
-    setActiveStep(prevActiveStep => prevActiveStep - 1)
+    dispatch(setActiveStep(activeStep - 1))
   }
 
   const handleStep = (step: number) => () => {
-    setActiveStep(step)
+    dispatch(setActiveStep(step))
   }
 
   const handleComplete = () => {
@@ -56,69 +65,89 @@ const CvStepper = () => {
   }
 
   const handleReset = () => {
-    setActiveStep(0)
+    dispatch(setActiveStep(0))
     setCompleted({})
   }
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box
+      sx={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1,
+        marginTop: '16px'
+      }}
+    >
       <Stepper nonLinear activeStep={activeStep}>
         {steps.map((label, index) => (
-          <Step key={label} completed={completed[index]}>
-            <StepButton color="inherit" onClick={handleStep(index)}>
+          <Step
+            key={label}
+            completed={completed[index]}
+            sx={{ paddingLeft: 0 }}
+          >
+            <StepButton
+              color="inherit"
+              onClick={handleStep(index)}
+              sx={{ margin: 0, padding: 0 }}
+            >
               {label}
             </StepButton>
           </Step>
         ))}
       </Stepper>
-      <div>
-        {allStepsCompleted() ? (
-          <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-              <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleReset}>Reset</Button>
-            </Box>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
-              Step {activeStep + 1}
-            </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-              <Button
-                color="inherit"
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{ mr: 1 }}
-              >
-                Back
-              </Button>
-              <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleNext} sx={{ mr: 1 }}>
-                Next
-              </Button>
-              {activeStep !== steps.length &&
-                (completed[activeStep] ? (
-                  <Typography
-                    variant="caption"
-                    sx={{ display: 'inline-block' }}
-                  >
-                    Step {activeStep + 1} already completed
-                  </Typography>
-                ) : (
-                  <Button onClick={handleComplete}>
-                    {completedSteps() === totalSteps() - 1
-                      ? 'Finish'
-                      : 'Complete Step'}
-                  </Button>
-                ))}
-            </Box>
-          </React.Fragment>
-        )}
-      </div>
+
+      {allStepsCompleted() ? (
+        <React.Fragment>
+          <Typography sx={{ mt: 2, mb: 1 }}>
+            All steps completed - you&apos;re finished
+          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            <Box sx={{ flex: '1 1 auto' }} />
+            <Button onClick={handleReset}>Reset</Button>
+          </Box>
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <Box sx={{ display: 'flex', flex: 1, marginTop: '16px' }}>
+            Step {activeStep + 1}
+          </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              pt: 2,
+              marginBottom: '16px'
+            }}
+          >
+            <Button
+              color="inherit"
+              disabled={activeStep === 0}
+              onClick={handleBack}
+              sx={{ mr: 1 }}
+            >
+              Back
+            </Button>
+            <Box sx={{ flex: '1 1 auto' }} />
+            <Button onClick={handleNext} sx={{ mr: 1 }}>
+              Next
+            </Button>
+            {activeStep !== steps.length &&
+              (completed[activeStep] ? (
+                <Typography variant="caption" sx={{ display: 'inline-block' }}>
+                  Step {activeStep + 1} already completed
+                </Typography>
+              ) : (
+                <Button onClick={handleComplete}>
+                  {completedSteps() === totalSteps() - 1
+                    ? 'Finish'
+                    : 'Complete Step'}
+                </Button>
+              ))}
+          </Box>
+        </React.Fragment>
+      )}
     </Box>
   )
 }
