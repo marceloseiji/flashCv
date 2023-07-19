@@ -5,6 +5,7 @@ type BasicInfos = {
   city: BasicInfosStatus
   state: BasicInfosStatus
   field: BasicInfosFields
+  isCompleted: boolean
 }
 
 enum BasicInfosFields {
