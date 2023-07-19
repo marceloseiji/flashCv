@@ -21,7 +21,9 @@ const ResponsiveMainContainer = (props: Props) => {
       sx={{
         height: `calc(100% - ${mobileHeightAdjustment})`,
         marginTop: `${mobileHeightAdjustment}`,
-        backgroundColor: theme.palette.background.default
+        backgroundColor: theme.palette.background.default,
+        display: 'flex',
+        flexDirection: 'column'
       }}
       data-testid="responsiveMainContainer"
     >
