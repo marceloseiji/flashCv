@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit'
-import { BasicInfos, BasicInfosStatus, Stepper } from './types'
+import { BasicInfos, Stepper } from './types'
 import { initialState } from './initialState'
 
 const cvSlice = createSlice({
