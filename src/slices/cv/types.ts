@@ -1,9 +1,9 @@
 type BasicInfos = {
-  name: BasicInfosStatus
-  role: BasicInfosStatus
-  age: BasicInfosStatus
-  city: BasicInfosStatus
-  state: BasicInfosStatus
+  name: TextValidate
+  role: TextValidate
+  age: TextValidate
+  city: TextValidate
+  state: TextValidate
   field: BasicInfosFields
   isCompleted: boolean
 }
@@ -16,14 +16,14 @@ enum BasicInfosFields {
   state = 'state'
 }
 
-type BasicInfosStatus = {
+type TextValidate = {
   text: string
   hasError: boolean
 }
 
 type Presentation = {
-  aboutMe: string
-  professionalObjective: string
+  aboutMe: TextValidate
+  professionalObjective: TextValidate
 }
 
 type Stepper = {
@@ -41,7 +41,7 @@ export type {
   InitialStateProps,
   Stepper,
   Presentation,
-  BasicInfosStatus
+  TextValidate
 }
 
 export { BasicInfosFields }
