@@ -29,8 +29,14 @@ const initialState: InitialStateProps = {
     }
   },
   presentation: {
-    aboutMe: '',
-    professionalObjective: ''
+    aboutMe: {
+      text: '',
+      hasError: false
+    },
+    professionalObjective: {
+      text: '',
+      hasError: false
+    }
   }
 }
 
