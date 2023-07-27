@@ -8,19 +8,22 @@ const cvSlice = createSlice({
   initialState,
   reducers: {
     setBasicInfos(state, action: PayloadAction<BasicInfos>) {
+      const updatedField = action.payload.field
+      const isCompleted =
+        !!action.payload.name.text &&
+        !!action.payload.age.text &&
+        !!action.payload.role.text &&
+        !!action.payload.city.text &&
+        !!action.payload.state.text
+
       state.stepBasicInfos = {
         ...state.stepBasicInfos,
-        [action.payload.field]: {
-          text: action.payload[action.payload.field].text,
-          hasError: action.payload[action.payload.field].hasError
+        [updatedField]: {
+          text: action.payload[updatedField].text,
+          hasError: action.payload[updatedField].hasError
         },
-        field: action.payload.field,
-        isCompleted:
-          !!action.payload.name.text &&
-          !!action.payload.age.text &&
-          !!action.payload.role.text &&
-          !!action.payload.city.text &&
-          !!action.payload.state.text
+        field: updatedField,
+        isCompleted
       }
     },
     setActiveStep(state, action: PayloadAction<Stepper['activeStep']>) {
