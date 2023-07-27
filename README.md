@@ -10,3 +10,4 @@ We want users to have access to a attractive curriculum with an easy system inte
  - User professional information should be updated any time;
  - User data should be stored only on browser, at this time.
  - At the end user curriculum should be printed as a PDF.
+ - React Secure Storage
